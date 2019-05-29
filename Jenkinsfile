@@ -1,15 +1,12 @@
 pipeline {
-  agent {
-    docker {
-      label 'jenkins-worker'
-      image 'jenkins:jnlp-slave'
+    agent {
+        label: jenkins-nodejs-worker
     }
-  }
-  stages {
-    stage('Build') {
-      steps {
-        sh 'sleep 300'
-      }
+    stages {
+        stage('Stage 1') {
+            steps {
+                echo 'Hello world!'
+            }
+        }
     }
-  }
 }
