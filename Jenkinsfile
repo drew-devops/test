@@ -10,7 +10,6 @@ pipeline {
                 sh 'zip -q -r build_output/build . -x Jenkinsfile *.sh .git* README.md build_output *.zip'
             }
         }
-    }
         stage('Publish') {
             steps {
                 sh """
