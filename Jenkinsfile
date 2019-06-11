@@ -13,10 +13,10 @@ pipeline {
         stage('Publish') {
             steps {
                 sh """
-                        <<-"    EOF" cat | bash
+                        <<-EOF cat | bash
                         echo hello
                         echo "hello again"
-    EOF
+			EOF
                    """
             }
         }
