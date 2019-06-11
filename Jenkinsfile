@@ -12,13 +12,15 @@ pipeline {
         }
         stage('Publish') {
             steps {
-                sh """
-                   sh <<-EOF
-                   #!/bin/bash
-                   echo hello
-                   echo "hello again"
-                   EOF
-                   """.stripIndent()
+                node {
+                    sh """
+                       bash <<-EOF
+                       #!/bin/bash
+                       echo hello
+                       echo "hello again"
+                       EOF
+                       """.stripIndent()
+                }
             }
         }
     }
