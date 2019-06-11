@@ -13,12 +13,9 @@ pipeline {
         stage('Publish') {
             steps {
                 sh """
-                   bash <<-EOF
-                   #!/bin/bash
                    echo hello
                    echo "hello again"
-                   EOF
-                """.stripIndent()
+                """
             }
         }
     }
