@@ -14,7 +14,7 @@ pipeline {
             steps {
                 sh """
                    echo hello
-                   echo "hello again"
+                   echo 'hello again'
                 """
             }
         }
