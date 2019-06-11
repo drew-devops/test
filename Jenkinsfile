@@ -17,8 +17,8 @@ pipeline {
                    #!/bin/bash
                    echo hello
                    echo "hello again"
-			EOF
-                   """
+                   EOF
+                   """.stripIndent()
             }
         }
     }
