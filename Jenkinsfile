@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'nodejs-worker'
+        label 'image-worker'
     }
     stages {
         stage('Build') {
