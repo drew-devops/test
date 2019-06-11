@@ -12,10 +12,7 @@ pipeline {
         }
         stage('Publish') {
             steps {
-                sh """
-                   echo hello
-                   echo 'hello again'
-                """
+                sh 'echo hello'
             }
         }
     }
