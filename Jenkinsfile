@@ -7,7 +7,7 @@ pipeline {
             steps {
                 echo 'Starting Build'
                 sh 'mkdir -p build_output'
-                sh 'zip -q -r build_output/build . -x Jenkinsfile *.sh .git* README.md build_output *.zip'
+//                sh 'zip -q -r build_output/build . -x Jenkinsfile *.sh .git* README.md build_output *.zip'
             }
         }
         stage('Publish') {
