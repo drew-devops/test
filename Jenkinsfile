@@ -1,3 +1,4 @@
+def distribution
 pipeline {
     agent {
         label 'image-worker'
@@ -13,7 +14,8 @@ pipeline {
         stage('Publish') {
             steps {
                 echo 'Starting Publish'
-                def distribution = readFile('distribution').trim()
+                script { distribution = sh(script: "cat distribution", returnStdout: true).trim() }
+//                def distribution = readFile('distribution').trim()
                 sh """
                        # Get Distribution ID
                        dist_id=\$(aws cloudfront list-distributions --output text --query "DistributionList.Items[].[Aliases.Items[0],Id]" | egrep "^${distribution}" | cut -f 2)
