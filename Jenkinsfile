@@ -16,21 +16,21 @@ pipeline {
                 def distribution = readFile('distribution').trim()
                 sh """
                        # Get Distribution ID
-                       dist_id=$(aws cloudfront list-distributions --output text --query "DistributionList.Items[].[Aliases.Items[0],Id]" | egrep "^${distribution}" | cut -f 2)
+                       dist_id=\$(aws cloudfront list-distributions --output text --query "DistributionList.Items[].[Aliases.Items[0],Id]" | egrep "^${distribution}" | cut -f 2)
 
                        echo "Distribution ID = $dist_id"
-                       if [ -z $dist_id ]; then
+                       if [ -z \$dist_id ]; then
                          echo "Distribution: $distribution Not Found"
                          exit 1
                        fi
 
                        # Get S3 bucket, should match Origin ID
-                       s3_bucket=$(aws cloudfront get-distribution --id $dist_id --output text --query "Distribution.DistributionConfig.Origins.Items[].Id")
+                       s3_bucket=\$(aws cloudfront get-distribution --id \$dist_id --output text --query "Distribution.DistributionConfig.Origins.Items[].Id")
 
-                       echo "S3 bucket = $s3_bucket"
+                       echo "S3 bucket = \$s3_bucket"
 
-                       aws s3 ls s3://$s3_bucket >& /dev/null
-                       if [ $? -ne 0 ]; then
+                       aws s3 ls s3://\$s3_bucket >& /dev/null
+                       if [ \$? -ne 0 ]; then
                          echo "S3 Bucket not found, check Cloudfront Distribution Origin ID"
                          exit 1
                        fi
