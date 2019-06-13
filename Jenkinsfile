@@ -31,7 +31,7 @@ pipeline {
 
                        echo "S3 bucket = \$s3_bucket"
 
-                       aws s3 ls s3://\$s3_bucket >& /dev/null
+                       aws s3 ls s3://\$s3_bucket > /dev/null
                        if [ \$? -ne 0 ]; then
                          echo "S3 Bucket not found, check Cloudfront Distribution Origin ID"
                          exit 1
