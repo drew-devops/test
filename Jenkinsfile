@@ -20,7 +20,7 @@ pipeline {
                        # Get Distribution ID
                        dist_id=\$(aws cloudfront list-distributions --output text --query "DistributionList.Items[].[Aliases.Items[0],Id]" | egrep "^${distribution}" | cut -f 2)
 
-                       echo "Distribution ID = $dist_id"
+                       echo "Distribution ID = \$dist_id"
                        if [ -z \$dist_id ]; then
                          echo "Distribution: $distribution Not Found"
                          exit 1
