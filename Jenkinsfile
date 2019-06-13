@@ -14,6 +14,11 @@ pipeline {
             steps {
                 echo 'Starting Publish'
                 sh 'ls -lth build_output'
+                sh """
+                       cd build_output
+                       unzip build.zip
+                       ls -lth .
+                   """
             }
         }
     }
