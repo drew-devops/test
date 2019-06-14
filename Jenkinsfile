@@ -57,7 +57,7 @@ pipeline {
                        fi
 
                        # Create invalidation
-                       invalidation_id=\$(aws cloudfront create-invalidation --distribution-id \$dist_id --paths "\$invalidation_path" --output text --query "Invalidation.Id")
+                       invalidation_id=\$(aws cloudfront create-invalidation --distribution-id \$dist_id --paths "/*" --output text --query "Invalidation.Id")
 
                        # Get invalidation status
                        printf "Distribution: \$distribution\nDistribution ID: \$dist_id\nInvalidation ID: \$invalidation_id\nInvalidation Path: \$invalidation_path\n"
