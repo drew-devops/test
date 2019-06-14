@@ -49,7 +49,7 @@ pipeline {
                        fi
                        # Sync new dist to S3
                        echo "Copying new data to S3 bucket: \$s3_bucket"
-                       aws s3 sync ./ s3://\$s3_bucket --exclude 'build.zip'
+                       aws s3 sync ./ s3://\$s3_bucket --exclude 'build.zip' --exclude 'build_output'
 
                        if [ \$? -ne 0 ]; then
                          echo "Something went wrong syncing new data to S3 bucket"
