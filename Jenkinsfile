@@ -12,6 +12,7 @@ pipeline {
             }
         }
         stage('Publish') {
+            when { tag "Release-*" }
             steps {
                 echo 'Starting Publish'
                 script { distribution = sh(script: "cat distribution", returnStdout: true).trim() }
